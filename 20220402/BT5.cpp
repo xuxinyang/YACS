@@ -14,18 +14,23 @@ int main()
     {
         cin >> a[i];
     }
+    if (n == 1) 
+    {
+        cout << a[1] << endl;
+        return 0;
+    }
+    f[1] = a[1];
     f[2] = a[2];
-    f[3] = f[1] + a[3];
+    g[n] = a[n];
     g[n - 1] = a[n - 1];
-    g[n - 2] = g[n-2] + a[n];
-    for (int i = 4; i <= n; i++)
+    for (int i = 3; i < n; i++)
     {
         f[i] = max(f[i-2] + a[i], f[i-1]);
     }
-    for (int i = n - 3; i >= 1; i--)
+    for (int i = n - 2; i >= 2; i--)
     {
         g[i] = max(g[i+2] + a[i], g[i+1]);
     }
-    cout << max(f[n], g[1]) << endl;
+    cout << max(f[n-1], g[2]) << endl;
     return 0;
 }
