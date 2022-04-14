@@ -1,36 +1,21 @@
 #include <bits/stdc++.h>
 using namespace std;
-int n, a[500005];
-long long sum, low_avg, high_avg, ans_low, ans_high;
-double avg; 
+long long n, ans, a[500005];
 int main()
 {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
     cin >> n;
     for (int i = 1; i <= n; i++)
     {
         cin >> a[i];
-        sum += a[i];
+        a[i] += 1e9 - i;
     }
-    avg = sum * 1.0 / n;
-    low_avg = ceil(avg);
-    high_avg = floor(avg);
-    // cout << low_avg << " " << high_avg << endl;
-    for (int i = 1; i <= n/2; i++)
+    sort(a + 1, a + n + 1);
+    for (int i = 1; i <= n; i++)
     {
-        ans_low += abs((low_avg - n/2  + i - 1) - a[i]);
+        ans += abs(a[i] - a[(n+1)/2]);
     }
-    for (int i = n/2 + 1; i <= n; i++)
-    {
-        ans_low += abs((low_avg + i - n/2 - 1) - a[i]);
-    }
-    for (int i = 1; i <= n/2; i++)
-    {
-        ans_high += abs((high_avg - n/2 + i - 1) - a[i]);
-    }
-    for (int i = n/2 + 1; i <= n; i++)
-    {
-        ans_high += abs((high_avg + i - n/2 - 1) - a[i]);
-    }
-    cout << min(ans_low, ans_high) << endl;
+    cout << ans;
     return 0;
 }
