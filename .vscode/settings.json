@@ -53,5 +53,11 @@
         "activityBar.background": "#4B105B",
         "titleBar.activeBackground": "#6A1680",
         "titleBar.activeForeground": "#FEFBFE"
+    },
+    "files.associations": {
+        "algorithm": "cpp",
+        "limits": "cpp",
+        "utility": "cpp",
+        "xutility": "cpp"
     }
 }
